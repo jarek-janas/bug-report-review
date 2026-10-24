@@ -1,0 +1,43 @@
+h3. Issue Summary
+<One sentence: object + observable failure + trigger. Same statement as the
+summary field, expanded by the context a reader needs.>
+
+h3. Steps to Reproduce
+# <Starting state: which user/role, which system, which screen or entry point>
+# <Action with the concrete data used - order no., part id, filter values>
+# <Action>
+# <The step at which the failure becomes visible>
+
+Reproducibility: <always | intermittent, N of M attempts | once, not reproduced>
+
+h3. Expected Results
+<The rule, and where it comes from: specification, acceptance criterion,
+behaviour of release X, customer agreement.>
+
+h3. Actual Results
+<The observable outcome, verbatim - exact message, exact value. Screenshots may
+illustrate it but never replace the text.>
+
+{code}
+<full stack trace as text, including every "Caused by:" block, or the exact
+message / the log excerpt with its timestamps>
+{code}
+
+Failing vs. working case:
+| | Failing | Working |
+|<parameter>|<value>|<value>|
+|<parameter>|<value>|<value>|
+
+Last known good: <version/build/date>  -  First bad: <version/build/date>
+
+h3. Workaround
+<Phrased as the triggering condition: "it only works when <X> is empty", not
+just "restart helps". If none is known, write "none known" - do not leave the
+section empty.>
+
+----
+Environment: <system/host, stage, plant/site, client version>
+Occurred at: <date and time, with timezone or site>
+Correlation ids: <request/session/job/order ids that appear in the logs>
+References: <linked issues, external ticket ids, the change suspected of
+causing it>

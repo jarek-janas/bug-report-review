@@ -1,0 +1,7 @@
+# Python bytecode from running bug-report-review/scripts/screen.py
+__pycache__/
+*.pyc
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
