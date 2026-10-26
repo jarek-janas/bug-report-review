@@ -71,11 +71,26 @@ agent that supports the [Agent Skills](https://agentskills.io) format.
 **Where to put it:**
 
 - `~/.agents/skills/` — the shared location, for agents that read it. Claude
-  Code reads `~/.claude/skills/` instead; link the skill there once:
-  - macOS / Linux:
-    `mkdir -p ~/.claude/skills && ln -s ~/.agents/skills/bug-report-review ~/.claude/skills/bug-report-review`
-  - Windows:
-    `New-Item -ItemType Junction -Path $HOME\.claude\skills\bug-report-review -Target $HOME\.agents\skills\bug-report-review`
+  Code reads `~/.claude/skills/` instead; link the skill there once. The
+  commands skip the link when the skill already shows up there — for example
+  because `~/.claude/skills` is itself a link to `~/.agents/skills`, where a
+  link created anyway would land inside the skill folder.
+
+  macOS / Linux:
+
+  ```sh
+  mkdir -p ~/.claude/skills
+  [ -e ~/.claude/skills/bug-report-review ] || ln -s ~/.agents/skills/bug-report-review ~/.claude/skills/bug-report-review
+  ```
+
+  Windows (PowerShell):
+
+  ```powershell
+  New-Item -ItemType Directory -Force $HOME\.claude\skills | Out-Null
+  if (-not (Test-Path $HOME\.claude\skills\bug-report-review)) {
+    New-Item -ItemType Junction -Path $HOME\.claude\skills\bug-report-review -Target $HOME\.agents\skills\bug-report-review
+  }
+  ```
 - `~/.claude/skills/` directly, if Claude Code is your only agent.
 - `.claude/skills/` inside a project, for that project only. Commit the folder
   there to share the skill with your team.
